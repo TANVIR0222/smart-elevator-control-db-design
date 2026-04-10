@@ -1,9 +1,12 @@
 # Smart Elevator Control System (ERD Design)
 
-![Uploading Screenshot 2026-04-11 at 12.15.52 AM.png…]()
-
 
 ## Project Overview
+
+<img width="1414" height="721" alt="Screenshot 2026-04-08 at 11 59 17 PM" src="https://github.com/user-attachments/assets/03ecad3c-79f7-4af6-b3ea-ac038b609b2f" />
+
+
+> **[Click Here to View the Live Database Schema / ERD]([https://app.eraser.io/workspace/zcPmPvLi7kTYXiR2dDJ7?origin=share](https://app.eraser.io/workspace/Xbtpp9tdwhft5WBxswS4))**
 
 This project represents a **scalable and production-ready database design** for a smart elevator control platform used in large infrastructures such as:
 
