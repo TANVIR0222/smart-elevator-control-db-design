@@ -1,4 +1,3 @@
-// ১. Infrastructure
 BuildingsName {
   id serial pk
   name varchar
@@ -28,7 +27,6 @@ Floors {
   updated_at timestamp default now()
 }
 
-// ২. Elevator Hardware
 Shafts {
   id serial pk
   building_id int fk
@@ -49,7 +47,6 @@ Elevators {
   updated_at timestamp default now()
 }
 
-// ৩. Real-time Status
 ElevatorStatus {
   elevator_id int pk, fk
   current_floor_id int fk
@@ -59,7 +56,6 @@ ElevatorStatus {
   last_ping_at timestamp
 }
 
-// History লগ (Analytics)
 ElevatorStatusHistory {
   id serial pk
   elevator_id int fk
@@ -70,7 +66,6 @@ ElevatorStatusHistory {
   recorded_at timestamp
 }
 
-// ৪. Access Mapping (Many-to-Many)
 ElevatorFloorAccess {
   elevator_id int pk, fk
   floor_id int pk, fk
@@ -79,7 +74,6 @@ ElevatorFloorAccess {
   created_at timestamp default now()
 }
 
-// ৫. Requests
 FloorRequests {
   id serial pk
   source_floor_id int fk
@@ -92,7 +86,6 @@ FloorRequests {
   updated_at timestamp default now()
 }
 
-// ৬. Assignment Layer
 RideAssignments {
   id serial pk
   request_id int fk
@@ -103,7 +96,6 @@ RideAssignments {
   created_at timestamp default now()
 }
 
-// ৭. Ride Logs
 Rides {
   id serial pk
   elevator_id int fk
@@ -116,7 +108,6 @@ Rides {
   created_at timestamp default now()
 }
 
-// ৮. Maintenance
 MaintenanceRecords {
   id serial pk
   elevator_id int fk
@@ -129,41 +120,32 @@ MaintenanceRecords {
   updated_at timestamp default now()
 }
 
-// Infrastructure
 BuildingsName.id < Zones.building_id
 BuildingsName.id < Floors.building_id
 Zones.id < Floors.zone_id
 
-// Hardware
 BuildingsName.id < Shafts.building_id
 Zones.id < Shafts.zone_id
 Shafts.id < Elevators.shaft_id
 
-// Status
 Elevators.id - ElevatorStatus.elevator_id
 Floors.id < ElevatorStatus.current_floor_id
 
-// Status History
 Elevators.id < ElevatorStatusHistory.elevator_id
 Floors.id < ElevatorStatusHistory.floor_id
 
-// Access Mapping
 Elevators.id < ElevatorFloorAccess.elevator_id
 Floors.id < ElevatorFloorAccess.floor_id
 
-// Requests
 Floors.id < FloorRequests.source_floor_id
 Floors.id < FloorRequests.destination_floor_id
 
-// Assignment
 FloorRequests.id < RideAssignments.request_id
 Elevators.id < RideAssignments.elevator_id
 
-// Ride Logs
 Elevators.id < Rides.elevator_id
 FloorRequests.id < Rides.request_id
 Floors.id < Rides.from_floor_id
 Floors.id < Rides.to_floor_id
 
-// Maintenance
 Elevators.id < MaintenanceRecords.elevator_id
