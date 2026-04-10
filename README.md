@@ -1,5 +1,8 @@
 # Smart Elevator Control System (ERD Design)
 
+![Uploading Screenshot 2026-04-11 at 12.15.52 AM.png…]()
+
+
 ## Project Overview
 
 This project represents a **scalable and production-ready database design** for a smart elevator control platform used in large infrastructures such as:
@@ -30,7 +33,7 @@ The platform supports:
 
 ---
 
-## 🏗️ Database Design Structure
+##  Database Design Structure
 
 ### 1. Infrastructure
 
